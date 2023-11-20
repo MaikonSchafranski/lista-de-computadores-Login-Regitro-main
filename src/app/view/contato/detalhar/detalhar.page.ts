@@ -13,7 +13,7 @@ import { Computadores } from 'src/app/model/entity/Computadores';
 export class DetalharPage implements OnInit {
   public computadoresForm: FormGroup;
   public computadores!: Computadores;
-  public edicao: boolean = false;
+  public edicao: boolean = true;
   public imagem: any;
 
   constructor(
