@@ -1,0 +1,93 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>Detalhar Computador</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-item>
+    <ion-toggle (ionChange)="habilitar()"> Habilitar a edição </ion-toggle>
+  </ion-item>
+
+  <form [formGroup]="computadoresForm" (ngSubmit)="editar()">
+    <ion-list lines="full">
+      <ion-item>
+        <ion-label position="floating">Categoria</ion-label>
+        <ion-input
+          formControlName="categoria"
+          placeholder="Qual a categoria do computador"
+          [disabled]="edicao"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Processador</ion-label>
+        <ion-input
+          formControlName="processador"
+          placeholder="Qual processador do computador"
+          [disabled]="edicao"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Placa de Vídeo</ion-label>
+        <ion-input
+          formControlName="placaVideo"
+          placeholder="Qual placa de vídeo do computador"
+          [disabled]="edicao"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Memória RAM</ion-label>
+        <ion-input
+          formControlName="memoriaRam"
+          placeholder="Qual a quantidade de memória RAM"
+          [disabled]="edicao"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Armazenamento</ion-label>
+        <ion-input
+          formControlName="armazenamento"
+          placeholder="Qual o tipo e capacidade de armazenamento"
+          [disabled]="edicao"
+        ></ion-input>
+      </ion-item>
+      <img src="{{this.computadores.downloadURL}}" />
+
+      <!-- Adicione blocos semelhantes para outros controles do formulário -->
+
+      <ion-button
+        expand="block"
+        fill="outline"
+        color="success"
+        type="submit"
+        [disabled]="edicao || computadoresForm.invalid"
+      >
+        Salvar
+      </ion-button>
+
+      <ion-button
+        expand="block"
+        fill="outline"
+        color="danger"
+        (click)="excluir()"
+        [disabled]="edicao"
+      >
+        Excluir
+      </ion-button>
+
+      <ion-button
+        expand="block"
+        fill="outline"
+        color="primary"
+        (click)="voltar()"
+        [disabled]="edicao"
+      >
+        Voltar
+      </ion-button>
+    </ion-list>
+  </form>
+</ion-content>
